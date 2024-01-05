@@ -54,3 +54,6 @@ migrations.json
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+stacks/hello-stack/.esbuild/
+stacks/my-nest-app/.esbuild/

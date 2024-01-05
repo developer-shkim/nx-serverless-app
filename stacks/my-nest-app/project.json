@@ -1,53 +1,61 @@
 {
   "name": "my-nest-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "stacks/my-nest-app/src",
   "projectType": "application",
+  "sourceRoot": "stacks/my-nest-app/src",
   "targets": {
     "build": {
-      "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
+      "executor": "nx:run-commands",
       "options": {
-        "target": "node",
-        "compiler": "tsc",
-        "outputPath": "dist/stacks/my-nest-app",
-        "main": "stacks/my-nest-app/src/main.ts",
-        "tsConfig": "stacks/my-nest-app/tsconfig.app.json",
-        "assets": ["stacks/my-nest-app/src/assets"],
-        "webpackConfig": "stacks/my-nest-app/webpack.config.js"
-      },
-      "configurations": {
-        "development": {},
-        "production": {}
+        "cwd": "stacks/my-nest-app",
+        "color": true,
+        "command": "sls package"
       }
     },
     "serve": {
-      "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
+      "executor": "nx:run-commands",
       "options": {
-        "buildTarget": "my-nest-app:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "my-nest-app:build:development"
-        },
-        "production": {
-          "buildTarget": "my-nest-app:build:production"
-        }
+        "cwd": "stacks/my-nest-app",
+        "color": true,
+        "command": "sls offline start"
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "stacks/my-nest-app",
+        "color": true,
+        "command": "sls deploy"
+      }
+    },
+    "remove": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "stacks/my-nest-app",
+        "color": true,
+        "command": "sls remove"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["stacks/my-nest-app/**/*.ts"]
+      }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "stacks/my-nest-app/jest.config.ts"
+        "jestConfig": "stacks/my-nest-app/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
       }
     }
   },
-  "tags": []
+  "tags": ["stack"]
 }
