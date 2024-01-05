@@ -10,20 +10,16 @@
     "importHelpers": false,
     "target": "es2022",
     "module": "commonjs",
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@nx-serverless-template/workspace-plugin": [
         "tools/workspace-plugin/src/index.ts"
-      ]
+      ],
+      "hello-lib": ["libs/hello-lib/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
