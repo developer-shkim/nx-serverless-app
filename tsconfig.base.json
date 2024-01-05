@@ -18,7 +18,8 @@
       "@nx-serverless-template/workspace-plugin": [
         "tools/workspace-plugin/src/index.ts"
       ],
-      "hello-lib": ["libs/hello-lib/src/index.ts"]
+      "hello-lib": ["libs/hello-lib/src/index.ts"],
+      "my-nest-lib": ["libs/my-nest-lib/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
