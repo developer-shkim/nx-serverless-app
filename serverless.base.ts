@@ -28,6 +28,6 @@ export const baseServerlessConfiguration: Partial<Serverless> = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
     },
-    region: 'eu-west-1',
+    region: 'ap-northeast-2',
   },
 };
